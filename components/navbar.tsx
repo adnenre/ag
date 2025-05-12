@@ -96,6 +96,7 @@ export default function Navbar() {
             <span className="font-bold text-xl text-green-600">
               {t("appName", "general")}
             </span>
+            <span className="text-sm text-green-600">v0.3 </span>
           </Link>
           <nav className="flex items-center space-x-6 text-sm font-medium">
             {filteredRoutes.map((route) => (
