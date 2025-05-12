@@ -39,7 +39,7 @@ export default function Home() {
             <div className="flex items-center justify-center">
               <img
                 alt={t("farmersMarketAgentsImage", "general")}
-                className="aspect-video overflow-hidden rounded-xl object-cover object-center"
+                className=" overflow-hidden rounded-xl object-cover object-center"
                 src="/home_page_image.webp"
               />
             </div>
