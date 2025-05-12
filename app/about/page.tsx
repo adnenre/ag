@@ -14,19 +14,19 @@ export default function About() {
   const teamMembers = [
     {
       name: "Mariem Bouajina",
-      role: "Founder",
+      role: "Co-Founder",
       //bio: "Former agricultural economist with 10 years in market analysis",
       avatar: "/team/priya.jpg",
     },
     {
       name: "Fares Ajround",
-      role: "Founder",
+      role: "Co-Founder",
       // bio: "Full-stack developer specializing in rural tech solutions",
       avatar: "/team/rajesh.jpg",
     },
     {
       name: "Adnen Rebai",
-      role: "Founder",
+      role: "Co-Founder",
       //bio: "Supply chain expert with focus on perishable goods",
       avatar: "/team/ananya.jpg",
     },
@@ -37,7 +37,7 @@ export default function About() {
       {/* Hero Section */}
       <section className="py-20 px-4 max-w-6xl mx-auto text-center">
         <h1 className="text-4xl md:text-5xl font-bold text-green-800 mb-6">
-          Solving Agriculture's Information Gap
+          We bring agriculture to excellence
         </h1>
         <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-10">
           Farmers often lack timely and accurate information about demand trends
