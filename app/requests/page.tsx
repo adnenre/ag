@@ -61,7 +61,7 @@ import { useLanguage } from "@/contexts/language-context";
 const allMarketRequestsData = [
   {
     id: 1,
-    agent: "Marché Bir el Kasaa",
+    agent: "Marché de gros Bir el Kasaa",
     product: "Tomatoes",
     quantity: 200,
     unit: "kg",
@@ -74,7 +74,7 @@ const allMarketRequestsData = [
   },
   {
     id: 2,
-    agent: "Fresh Foods Co.",
+    agent: "Marché de gros Bir el Kasaa",
     product: "Potatoes",
     quantity: 500,
     unit: "kg",
@@ -87,7 +87,7 @@ const allMarketRequestsData = [
   },
   {
     id: 3,
-    agent: "Green Grocers",
+    agent: "Marché de gros Bir el Kasaa",
     product: "Carrots",
     quantity: 150,
     unit: "kg",
@@ -100,7 +100,7 @@ const allMarketRequestsData = [
   },
   {
     id: 4,
-    agent: "Fresh Foods Co.",
+    agent: "Marché de gros Bir el Kasaa",
     product: "Lettuce",
     quantity: 100,
     unit: "kg",
@@ -113,7 +113,7 @@ const allMarketRequestsData = [
   },
   {
     id: 5,
-    agent: "City Wholesalers",
+    agent: "Marché de gros Bir el Kasaa",
     product: "Onions",
     quantity: 300,
     unit: "kg",
@@ -126,7 +126,7 @@ const allMarketRequestsData = [
   },
   {
     id: 6,
-    agent: "Fresh Foods Co.",
+    agent: "Marché de gros Bir el Kasaa",
     product: "Apples",
     quantity: 400,
     unit: "kg",
@@ -139,7 +139,7 @@ const allMarketRequestsData = [
   },
   {
     id: 7,
-    agent: "Fresh Foods Co.",
+    agent: "Marché de gros Bir el Kasaa",
     product: "Oranges",
     quantity: 250,
     unit: "kg",
@@ -152,7 +152,7 @@ const allMarketRequestsData = [
   },
   {
     id: 8,
-    agent: "Fresh Foods Co.",
+    agent: "Marché de gros Bir el Kasaa",
     product: "Bananas",
     quantity: 300,
     unit: "kg",
