@@ -1,40 +1,54 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { useRouter } from "next/navigation"
-import { toast } from "@/components/ui/use-toast"
-import { Toaster } from "@/components/ui/toaster"
+import { useState } from "react";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { useRouter } from "next/navigation";
+import { toast } from "@/components/ui/use-toast";
+import { Toaster } from "@/components/ui/toaster";
+
+import { LocationAdress } from "@/components/LocationAdress";
+import { LocationFarmer } from "@/components/locationFarmer";
 
 export default function RegisterPage() {
-  const [userType, setUserType] = useState("farmer")
-  const router = useRouter()
+  const [userType, setUserType] = useState("farmer");
+  const router = useRouter();
 
   const handleRegister = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     toast({
       title: "Registration successful",
       description: "Your account has been created. You can now log in.",
-    })
+    });
 
     // Redirect to login page after registration
     setTimeout(() => {
-      router.push("/login")
-    }, 1500)
-  }
+      router.push("/login");
+    }, 1500);
+  };
 
   return (
     <div className="container flex h-screen w-screen flex-col items-center justify-center">
       <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px] md:w-[500px]">
         <div className="flex flex-col space-y-2 text-center">
-          <h1 className="text-2xl font-semibold tracking-tight">Create an account</h1>
-          <p className="text-sm text-muted-foreground">Enter your details below to create your account</p>
+          <h1 className="text-2xl font-semibold tracking-tight">
+            Create an account
+          </h1>
+          <p className="text-sm text-muted-foreground">
+            Enter your details below to create your account
+          </p>
         </div>
 
         <Tabs defaultValue="register" className="w-full">
@@ -47,7 +61,9 @@ export default function RegisterPage() {
             <Card>
               <CardHeader>
                 <CardTitle>Account Registration</CardTitle>
-                <CardDescription>Choose your account type and fill in your details.</CardDescription>
+                <CardDescription>
+                  Choose your account type and fill in your details.
+                </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="space-y-2">
@@ -98,17 +114,33 @@ export default function RegisterPage() {
                 {userType === "agent" && (
                   <div className="grid gap-2">
                     <Label htmlFor="company-name">Company Name</Label>
-                    <Input id="company-name" placeholder="Enter your company name" />
+                    <Input
+                      id="company-name"
+                      placeholder="Enter your company name"
+                    />
                   </div>
                 )}
-
-                <div className="grid gap-2">
-                  <Label htmlFor="location">Location</Label>
-                  <Input id="location" placeholder="City, Region" />
-                </div>
+                {userType === "farmer" && (
+                  <div className="grid gap-2">
+                    <div className="grid gap-2">
+                      <Label htmlFor="location">Location</Label>
+                      <LocationFarmer />
+                    </div>
+                  </div>
+                )}
+                {userType === "agent" && (
+                  <div className="grid gap-2">
+                    <Label htmlFor="location">Location</Label>
+                    <LocationAdress />
+                  </div>
+                )}
               </CardContent>
               <CardFooter>
-                <Button type="submit" className="w-full bg-green-600 hover:bg-green-700" onClick={handleRegister}>
+                <Button
+                  type="submit"
+                  className="w-full bg-green-600 hover:bg-green-700"
+                  onClick={handleRegister}
+                >
                   Create Account
                 </Button>
               </CardFooter>
@@ -119,25 +151,36 @@ export default function RegisterPage() {
             <Card>
               <CardHeader>
                 <CardTitle>Login</CardTitle>
-                <CardDescription>Enter your credentials to access your account.</CardDescription>
+                <CardDescription>
+                  Enter your credentials to access your account.
+                </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="grid gap-2">
                   <Label htmlFor="login-email">Email</Label>
-                  <Input id="login-email" type="email" placeholder="m@example.com" />
+                  <Input
+                    id="login-email"
+                    type="email"
+                    placeholder="m@example.com"
+                  />
                 </div>
                 <div className="grid gap-2">
                   <Label htmlFor="login-password">Password</Label>
                   <Input id="login-password" type="password" />
                 </div>
                 <div className="text-sm text-right">
-                  <Link href="/forgot-password" className="text-green-600 hover:underline">
+                  <Link
+                    href="/forgot-password"
+                    className="text-green-600 hover:underline"
+                  >
                     Forgot password?
                   </Link>
                 </div>
               </CardContent>
               <CardFooter>
-                <Button className="w-full bg-green-600 hover:bg-green-700">Login</Button>
+                <Button className="w-full bg-green-600 hover:bg-green-700">
+                  Login
+                </Button>
               </CardFooter>
             </Card>
           </TabsContent>
@@ -145,5 +188,5 @@ export default function RegisterPage() {
       </div>
       <Toaster />
     </div>
-  )
+  );
 }
