@@ -1,10 +1,10 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import Link from "next/link"
-import { usePathname, useRouter } from "next/navigation"
-import { UserCircle, Menu, Shield, LogOut } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { useState } from "react";
+import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
+import { UserCircle, Menu, Shield, LogOut } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -12,37 +12,37 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
-import { cn } from "@/lib/utils"
-import { toast } from "@/components/ui/use-toast"
-import { Toaster } from "@/components/ui/toaster"
-import { useLanguage } from "@/contexts/language-context"
-import { LanguageSwitcher } from "@/components/language-switcher"
+} from "@/components/ui/dropdown-menu";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { cn } from "@/lib/utils";
+import { toast } from "@/components/ui/use-toast";
+import { Toaster } from "@/components/ui/toaster";
+import { useLanguage } from "@/contexts/language-context";
+import { LanguageSwitcher } from "@/components/language-switcher";
 
 export default function Navbar() {
-  const pathname = usePathname()
-  const router = useRouter()
-  const { t } = useLanguage()
+  const pathname = usePathname();
+  const router = useRouter();
+  const { t } = useLanguage();
 
   // Mock authentication state - in a real app, this would come from your auth provider
-  const [isAuthenticated, setIsAuthenticated] = useState(true)
-  const [userRole, setUserRole] = useState("farmer") // or "agent" or "admin"
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [userRole, setUserRole] = useState(""); // or "agent" or "admin"
 
   // Check if we're in the admin section
-  const isAdminSection = pathname?.startsWith("/admin")
+  const isAdminSection = pathname?.startsWith("/admin");
 
   // Check if we're on the login or register page
-  const isAuthPage = pathname === "/login" || pathname === "/register"
+  const isAuthPage = pathname === "/login" || pathname === "/register";
 
   // Don't show navbar on auth pages
   if (isAuthPage) {
-    return null
+    return null;
   }
 
   // Don't show regular navbar in admin section
   if (isAdminSection) {
-    return null
+    return null;
   }
 
   const routes = [
@@ -55,41 +55,47 @@ export default function Navbar() {
       href: "/dashboard",
       label: t("dashboard", "navigation"),
       active: pathname === "/dashboard",
+      show: userRole === "farmer" && isAuthenticated,
     },
     {
       href: "/requests",
       label: t("requests", "navigation"),
       active: pathname === "/requests",
+      show: isAuthenticated,
     },
     {
       href: "/inventory",
       label: t("inventory", "navigation"),
       active: pathname === "/inventory",
       // Only show for farmers
-      show: userRole === "farmer",
+      show: userRole === "farmer" && isAuthenticated,
     },
-  ]
+  ];
 
-  const filteredRoutes = routes.filter((route) => !route.show || route.show === true)
+  const filteredRoutes = routes.filter(
+    (route) => !route.show || route.show === true
+  );
 
   const handleLogout = () => {
     toast({
       title: t("success", "general"),
       description: t("logout", "general"),
-    })
+    });
 
     // In a real app, you would clear auth state here
     setTimeout(() => {
-      router.push("/login")
-    }, 1000)
-  }
+      router.push("/login");
+    }, 1000);
+  };
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center">
         <div className="mr-4 hidden md:flex">
           <Link href="/" className="mr-6 flex items-center space-x-2">
-            <span className="font-bold text-xl text-green-600">{t("appName", "general")}</span>
+            <span className="font-bold text-xl text-green-600">
+              {t("appName", "general")}
+            </span>
           </Link>
           <nav className="flex items-center space-x-6 text-sm font-medium">
             {filteredRoutes.map((route) => (
@@ -98,7 +104,7 @@ export default function Navbar() {
                 href={route.href}
                 className={cn(
                   "transition-colors hover:text-foreground/80",
-                  route.active ? "text-foreground" : "text-foreground/60",
+                  route.active ? "text-foreground" : "text-foreground/60"
                 )}
               >
                 {route.label}
@@ -116,7 +122,9 @@ export default function Navbar() {
           </SheetTrigger>
           <SheetContent side="left" className="pr-0">
             <Link href="/" className="flex items-center space-x-2">
-              <span className="font-bold text-xl text-green-600">{t("appName", "general")}</span>
+              <span className="font-bold text-xl text-green-600">
+                {t("appName", "general")}
+              </span>
             </Link>
             <nav className="mt-6 flex flex-col space-y-4">
               {filteredRoutes.map((route) => (
@@ -125,7 +133,7 @@ export default function Navbar() {
                   href={route.href}
                   className={cn(
                     "text-foreground/60 transition-colors hover:text-foreground/80",
-                    route.active && "text-foreground",
+                    route.active && "text-foreground"
                   )}
                 >
                   {route.label}
@@ -146,8 +154,13 @@ export default function Navbar() {
 
         <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
           <div className="w-full flex-1 md:w-auto md:flex-none">
-            <Link href="/" className="mr-6 flex items-center space-x-2 md:hidden">
-              <span className="font-bold text-xl text-green-600">{t("appName", "general")}</span>
+            <Link
+              href="/"
+              className="mr-6 flex items-center space-x-2 md:hidden"
+            >
+              <span className="font-bold text-xl text-green-600">
+                {t("appName", "general")}
+              </span>
             </Link>
           </div>
 
@@ -163,7 +176,9 @@ export default function Navbar() {
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end">
-                  <DropdownMenuLabel>{t("account", "general")}</DropdownMenuLabel>
+                  <DropdownMenuLabel>
+                    {t("account", "general")}
+                  </DropdownMenuLabel>
                   <DropdownMenuSeparator />
                   <DropdownMenuItem asChild>
                     <Link href="/profile">{t("profile", "navigation")}</Link>
@@ -172,7 +187,9 @@ export default function Navbar() {
                     <Link href="/settings">{t("settings", "navigation")}</Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild>
-                    <Link href="/subscription">{t("subscription", "navigation")}</Link>
+                    <Link href="/subscription">
+                      {t("subscription", "navigation")}
+                    </Link>
                   </DropdownMenuItem>
                   {userRole === "admin" && (
                     <>
@@ -207,5 +224,5 @@ export default function Navbar() {
       </div>
       <Toaster />
     </header>
-  )
+  );
 }

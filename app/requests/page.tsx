@@ -347,13 +347,13 @@ export default function RequestsPage() {
                         {request.quantity} {request.unit}
                       </TableCell>
                       <TableCell>
-                        ${request.medianPrice.toFixed(2)}/{request.unit}
+                        {request.medianPrice.toFixed(2)} TND/{request.unit}
                       </TableCell>
                       <TableCell>
-                        ${request.officialPrice.toFixed(2)}/{request.unit}
+                        {request.officialPrice.toFixed(2)} TND/{request.unit}
                       </TableCell>
                       <TableCell className="font-medium text-green-600">
-                        ${request.offeredPrice.toFixed(2)}/{request.unit}
+                        {request.offeredPrice.toFixed(2)} TND/{request.unit}
                       </TableCell>
                       <TableCell>{request.deadline}</TableCell>
                       <TableCell>
