@@ -1,12 +1,12 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { useLanguage } from "@/contexts/language-context"
-import { PwaInstallButton } from "@/components/pwa-install-button"
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { useLanguage } from "@/contexts/language-context";
+import { PwaInstallButton } from "@/components/pwa-install-button";
 
 export default function Home() {
-  const { t } = useLanguage()
+  const { t } = useLanguage();
 
   return (
     <div className="flex flex-col min-h-[calc(100vh-4rem)]">
@@ -18,10 +18,16 @@ export default function Home() {
                 <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none">
                   {t("connecting_farmers_markets", "general")}
                 </h1>
-                <p className="max-w-[600px] text-gray-500 md:text-xl">{t("appDescription", "general")}</p>
+                <p className="max-w-[600px] text-gray-500 md:text-xl">
+                  {t("appDescription", "general")}
+                </p>
               </div>
               <div className="flex flex-col gap-2 min-[400px]:flex-row">
-                <Button asChild size="lg" className="bg-green-600 hover:bg-green-700">
+                <Button
+                  asChild
+                  size="lg"
+                  className="bg-green-600 hover:bg-green-700"
+                >
                   <Link href="/register">{t("getStarted", "general")}</Link>
                 </Button>
                 <Button asChild size="lg" variant="outline">
@@ -34,7 +40,7 @@ export default function Home() {
               <img
                 alt={t("farmersMarketAgentsImage", "general")}
                 className="aspect-video overflow-hidden rounded-xl object-cover object-center"
-                src="/placeholder.svg?height=550&width=800"
+                src="/home_page_image.webp"
               />
             </div>
           </div>
@@ -75,8 +81,12 @@ export default function Home() {
                 </svg>
               </div>
               <div className="space-y-2">
-                <h3 className="text-xl font-bold">{t("forFarmers", "general")}</h3>
-                <p className="text-gray-500">{t("farmersDescription", "general")}</p>
+                <h3 className="text-xl font-bold">
+                  {t("forFarmers", "general")}
+                </h3>
+                <p className="text-gray-500">
+                  {t("farmersDescription", "general")}
+                </p>
               </div>
             </div>
             <div className="flex flex-col justify-center space-y-4">
@@ -97,8 +107,12 @@ export default function Home() {
                 </svg>
               </div>
               <div className="space-y-2">
-                <h3 className="text-xl font-bold">{t("forMarketAgents", "general")}</h3>
-                <p className="text-gray-500">{t("agentsDescription", "general")}</p>
+                <h3 className="text-xl font-bold">
+                  {t("forMarketAgents", "general")}
+                </h3>
+                <p className="text-gray-500">
+                  {t("agentsDescription", "general")}
+                </p>
               </div>
             </div>
             <div className="flex flex-col justify-center space-y-4">
@@ -122,8 +136,12 @@ export default function Home() {
                 </svg>
               </div>
               <div className="space-y-2">
-                <h3 className="text-xl font-bold">{t("subscriptionBenefits", "general")}</h3>
-                <p className="text-gray-500">{t("subscriptionDescription", "general")}</p>
+                <h3 className="text-xl font-bold">
+                  {t("subscriptionBenefits", "general")}
+                </h3>
+                <p className="text-gray-500">
+                  {t("subscriptionDescription", "general")}
+                </p>
               </div>
             </div>
           </div>
@@ -142,7 +160,11 @@ export default function Home() {
               </p>
             </div>
             <div className="flex flex-col gap-2 min-[400px]:flex-row">
-              <Button asChild size="lg" className="bg-green-600 hover:bg-green-700">
+              <Button
+                asChild
+                size="lg"
+                className="bg-green-600 hover:bg-green-700"
+              >
                 <Link href="/register">{t("signUp", "general")}</Link>
               </Button>
               <PwaInstallButton />
@@ -151,5 +173,5 @@ export default function Home() {
         </div>
       </section>
     </div>
-  )
+  );
 }
