@@ -57,18 +57,18 @@ export default function About() {
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4 ">
             <Button className="bg-green-600 hover:bg-green-700">
-              Join as Farmer
+              <Link href="/register"> Join as Farmer</Link>
             </Button>
             <Button
               variant="outline"
               className="text-green-600 border-green-600"
             >
-              Join as Agent
+              <Link href="/registerAgent"> Join as Agent</Link>
             </Button>
           </div>
         </div>
       </section>
-      {/* Our Value Section */}
+
       {/* Our Values Section - Add this before the Team Section */}
       <section className="py-20 bg-white">
         <div className="max-w-6xl mx-auto px-4">
