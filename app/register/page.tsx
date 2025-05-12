@@ -21,8 +21,9 @@ import { Toaster } from "@/components/ui/toaster";
 
 import { LocationAdress } from "@/components/LocationAdress";
 import { LocationFarmer } from "@/components/locationFarmer";
-
+import { useLanguage } from "@/contexts/language-context";
 export default function RegisterPage() {
+  const { t } = useLanguage();
   const [userType, setUserType] = useState("farmer");
   const router = useRouter();
 
@@ -44,10 +45,10 @@ export default function RegisterPage() {
       <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px] md:w-[500px]">
         <div className="flex flex-col space-y-2 text-center">
           <h1 className="text-2xl font-semibold tracking-tight">
-            Create an account
+            {t("registerTitle", "auth")}
           </h1>
           <p className="text-sm text-muted-foreground">
-            Enter your details below to create your account
+            {t("registerSubtitle", "auth")}
           </p>
         </div>
 
@@ -59,38 +60,36 @@ export default function RegisterPage() {
 
           <TabsContent value="register">
             <Card>
-              <CardHeader>
-                <CardTitle>Account Registration</CardTitle>
-                <CardDescription>
-                  Choose your account type and fill in your details.
-                </CardDescription>
-              </CardHeader>
+              {/* <CardHeader>
+                <CardTitle>{t("accountReg", "auth")}</CardTitle>
+                <CardDescription>{t("accountRegSub", "auth")}</CardDescription>
+              </CardHeader> */}
               <CardContent className="space-y-4">
-                <div className="space-y-2">
-                  <Label>Account Type</Label>
+                <div className="flex flex-col justify-center items-center space-y-2 justify-center">
+                  <Label>{t("accountType", "auth")}</Label>
                   <RadioGroup
                     defaultValue="farmer"
                     value={userType}
                     onValueChange={setUserType}
-                    className="flex space-x-2"
+                    className="flex space-x-2 justify-center items-center"
                   >
                     <div className="flex items-center space-x-2">
                       <RadioGroupItem value="farmer" id="farmer" />
                       <Label htmlFor="farmer" className="cursor-pointer">
-                        Farmer
+                        {t("farmer", "auth")}
                       </Label>
                     </div>
                     <div className="flex items-center space-x-2">
                       <RadioGroupItem value="agent" id="agent" />
                       <Label htmlFor="agent" className="cursor-pointer">
-                        Market Agent
+                        {t("agent", "auth")}
                       </Label>
                     </div>
                   </RadioGroup>
                 </div>
 
                 <div className="grid gap-2">
-                  <Label htmlFor="name">Full Name</Label>
+                  <Label htmlFor="name">{t("fullName", "auth")}</Label>
                   <Input id="name" placeholder="Enter your full name" />
                 </div>
 
@@ -100,20 +99,22 @@ export default function RegisterPage() {
                 </div>
 
                 <div className="grid gap-2">
-                  <Label htmlFor="password">Password</Label>
+                  <Label htmlFor="password">{t("passWord", "auth")}</Label>
                   <Input id="password" type="password" />
                 </div>
 
                 {userType === "farmer" && (
                   <div className="grid gap-2">
-                    <Label htmlFor="farm-name">Farm Name</Label>
+                    <Label htmlFor="farm-name">{t("farmName", "auth")}</Label>
                     <Input id="farm-name" placeholder="Enter your farm name" />
                   </div>
                 )}
 
                 {userType === "agent" && (
                   <div className="grid gap-2">
-                    <Label htmlFor="company-name">Company Name</Label>
+                    <Label htmlFor="company-name">
+                      {t("companyName", "auth")}
+                    </Label>
                     <Input
                       id="company-name"
                       placeholder="Enter your company name"
@@ -123,14 +124,14 @@ export default function RegisterPage() {
                 {userType === "farmer" && (
                   <div className="grid gap-2">
                     <div className="grid gap-2">
-                      <Label htmlFor="location">Location</Label>
+                      <Label htmlFor="location">{t("location", "auth")}</Label>
                       <LocationFarmer />
                     </div>
                   </div>
                 )}
                 {userType === "agent" && (
                   <div className="grid gap-2">
-                    <Label htmlFor="location">Location</Label>
+                    <Label htmlFor="location">{t("location", "auth")}</Label>
                     <LocationAdress />
                   </div>
                 )}
@@ -141,7 +142,7 @@ export default function RegisterPage() {
                   className="w-full bg-green-600 hover:bg-green-700"
                   onClick={handleRegister}
                 >
-                  Create Account
+                  {t("createAccount", "auth")}
                 </Button>
               </CardFooter>
             </Card>

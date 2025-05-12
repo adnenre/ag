@@ -172,6 +172,12 @@ export const translations: Translations = {
       location: "Location",
       demoAccounts: "Demo Accounts:",
       admin: "Admin",
+      register: "Register",
+      login: "Login",
+      password: "Password",
+      accountReg: "Account Registration",
+      accountRegSub: "Choose your account type and fill in your details.",
+      createAccount: "Create Account",
     },
     gouvernorate: {
       g_Tunis: "Governorate of Tunis",
@@ -622,6 +628,13 @@ export const translations: Translations = {
       location: "Emplacement",
       demoAccounts: "Comptes de démonstration:",
       admin: "Administrateur",
+      register: "S'inscrire",
+      login: "Connexion",
+      password: "Mot de passe",
+      accountReg: "Création du compte",
+      accountRegSub:
+        "Choisissez votre type de compte et renseignez vos informations.",
+      createAccount: "Créer un compte",
     },
     gouvernorate: {
       g_Tunis: "Gouvernorat de Tunis",
