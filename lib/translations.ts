@@ -31,13 +31,13 @@ export const translations: Translations = {
     general: {
       connecting_farmers_markets: "Connecting Farmers with Markets",
       appDescription:
-        "Agôn bridges the gap between farmers and regional market agents, making it easier to exchange requests and manage inventory.",
+        "AgriConnect bridges the gap between farmers and regional market agents, making it easier to exchange requests and manage inventory.",
       getStarted: "Get Started",
       learnMore: "Learn More",
       howItWorks: "How It Works",
       platformDescription:
         "Our platform simplifies the connection between farmers and regional market agents.",
-      appName: "Agôn",
+      appName: "AgriConnect",
       forFarmers: "For Farmers",
       farmersDescription:
         "Manage your inventory, view market requests, and connect with regional agents looking for your products.",
@@ -460,7 +460,7 @@ export const translations: Translations = {
       platformDescription:
         "Notre plateforme simplifie la mise en relation entre les agriculteurs et les agents des marchés régionaux.",
 
-      appName: "Agôn",
+      appName: "AgriConnect",
       forFarmers: "Pour les agriculteurs",
       farmersDescription:
         "Gérez votre inventaire, consultez les demandes de marché et contactez les agents régionaux à la recherche de vos produits.",
@@ -900,7 +900,7 @@ export const translations: Translations = {
       joinToday_join: " انضم إلى ",
       joinToday_today: "اليوم ",
       connectToday: "ابدأ بالتواصل مع المزارعين ووكلاء السوق في منطقتك.",
-      appName: "Agôn",
+      appName: "AgriConnect",
       loading: "جاري التحميل...",
       save: "حفظ",
       cancel: "إلغاء",
