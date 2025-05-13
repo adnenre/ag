@@ -50,12 +50,19 @@ export default function Navbar() {
       href: "/",
       label: t("home", "navigation"),
       active: pathname === "/",
+      show: true,
+    },
+    {
+      href: "/about",
+      label: t("about", "navigation"),
+      active: pathname === "/about",
+      show: true,
     },
     {
       href: "/dashboard",
       label: t("dashboard", "navigation"),
       active: pathname === "/dashboard",
-      show: userRole === "farmer" && isAuthenticated,
+      show: isAuthenticated,
     },
     {
       href: "/requests",
@@ -68,13 +75,11 @@ export default function Navbar() {
       label: t("inventory", "navigation"),
       active: pathname === "/inventory",
       // Only show for farmers
-      show: userRole === "farmer" && isAuthenticated,
+      show: isAuthenticated,
     },
   ];
 
-  const filteredRoutes = routes.filter(
-    (route) => !route.show || route.show === true
-  );
+  const filteredRoutes = routes.filter((route) => route.show === true);
 
   const handleLogout = () => {
     toast({

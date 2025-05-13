@@ -16,7 +16,7 @@ export default function About() {
       name: "Mariem Bouajina",
       role: "Co-Founder",
       //bio: "Former agricultural economist with 10 years in market analysis",
-      avatar: "/teams/mariem.webp",
+      avatar: "/teams/maryam.webp",
     },
     {
       name: "Fares Ajround",

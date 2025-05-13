@@ -136,6 +136,7 @@ export const translations: Translations = {
     },
     navigation: {
       home: "Home",
+      about: "About us",
       dashboard: "Dashboard",
       inventory: "Inventory",
       requests: "Market Requests",
@@ -591,6 +592,7 @@ export const translations: Translations = {
     },
     navigation: {
       home: "Accueil",
+      about: "A props de nous",
       dashboard: "Tableau de bord",
       inventory: "Inventaire",
       requests: "Demandes du marché",
@@ -1047,6 +1049,7 @@ export const translations: Translations = {
     },
     navigation: {
       home: "الرئيسية",
+      about: "معلومات عنا",
       dashboard: "لوحة التحكم",
       inventory: "المخزون",
       requests: "طلبات السوق",
