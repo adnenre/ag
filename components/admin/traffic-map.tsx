@@ -9,26 +9,26 @@ import { MapIcon, LayersIcon } from "lucide-react";
 
 // Define Tunisia's governorates with their coordinates (approximate centers for SVG)
 const governorates = {
-  g_Tunis: { name: "Tunis", x: 320, y: 220 },
-  g_Ariana: { name: "Ariana", x: 340, y: 200 },
-  g_Ben_Arous: { name: "Ben Arous", x: 350, y: 230 },
-  g_Manouba: { name: "Manouba", x: 310, y: 210 },
-  g_Beja: { name: "Béja", x: 250, y: 180 },
-  g_Nabeul: { name: "Nabeul", x: 400, y: 250 },
-  g_Bizerte: { name: "Bizerte", x: 280, y: 150 },
+  g_Tunis: { name: "Tunis", x: 340, y: 160 },
+  g_Ariana: { name: "Ariana", x: 330, y: 140 },
+  g_Ben_Arous: { name: "Ben Arous", x: 350, y: 180 },
+  g_Manouba: { name: "Manouba", x: 310, y: 160 },
+  g_Beja: { name: "Béja", x: 240, y: 195 },
+  g_Nabeul: { name: "Nabeul", x: 390, y: 170 },
+  g_Bizerte: { name: "Bizerte", x: 280, y: 130 },
   g_Jendouba: { name: "Jendouba", x: 220, y: 170 },
-  g_Kef: { name: "Kef", x: 240, y: 200 },
-  g_Seliana: { name: "Seliana", x: 260, y: 220 },
-  g_Sousse: { name: "Sousse", x: 380, y: 320 },
-  g_Monastir: { name: "Monastir", x: 390, y: 340 },
-  g_Mahdia: { name: "Mahdia", x: 370, y: 360 },
+  g_Kef: { name: "Kef", x: 220, y: 250 },
+  g_Seliana: { name: "Seliana", x: 260, y: 250 },
+  g_Sousse: { name: "Sousse", x: 405, y: 275 },
+  g_Monastir: { name: "Monastir", x: 410, y: 310 },
+  g_Mahdia: { name: "Mahdia", x: 395, y: 330 },
   g_Sfax: { name: "Sfax", x: 350, y: 380 },
   g_Kairouan: { name: "Kairouan", x: 300, y: 280 },
-  g_Kasserine: { name: "Kasserine", x: 240, y: 260 },
+  g_Kasserine: { name: "Kasserine", x: 240, y: 310 },
   g_SidiBouzid: { name: "Sidi Bouzid", x: 280, y: 300 },
   g_Gabes: { name: "Gabes", x: 330, y: 420 },
-  g_Mednine: { name: "Medenine", x: 360, y: 450 },
-  g_Tataouin: { name: "Tataouine", x: 390, y: 480 },
+  g_Mednine: { name: "Medenine", x: 360, y: 460 },
+  g_Tataouin: { name: "Tataouine", x: 290, y: 480 },
   g_Gafsa: { name: "Gafsa", x: 230, y: 350 },
   g_Tozer: { name: "Tozeur", x: 200, y: 380 },
   g_Kebili: { name: "Kebili", x: 270, y: 400 },
@@ -39,9 +39,9 @@ const governorates = {
 const generateFarms = (count) => {
   const farms = [];
   // Define the boundaries of Tunisia on our SVG
-  const minX = 150;
-  const maxX = 400;
-  const minY = 80;
+  const minX = 200;
+  const maxX = 370;
+  const minY = 150;
   const maxY = 450;
 
   // Areas with higher concentration of farms (agricultural regions)
@@ -200,11 +200,11 @@ export default function TrafficMap({ product, period, viewType }) {
   const [visibility, setVisibility] = useState({
     governorates: true,
     farms: true,
-    tomatoes: true,
-    potatoes: true,
-    onions: true,
-    olives: true,
-    dates: true,
+    tomatoes: false,
+    potatoes: false,
+    onions: false,
+    olives: false,
+    dates: false,
   });
 
   // Toggle visibility of a specific element
@@ -312,17 +312,19 @@ export default function TrafficMap({ product, period, viewType }) {
         <svg
           width="100%"
           height="100%"
-          viewBox="0 0 1000 1000"
+          viewBox="50 21 600 600"
           className="overflow-visible"
         >
           {/* Tunisia outline - only show in simple map mode */}
           {mapType === "simple" && (
-            <path
-              d={tunisiaOutline}
-              fill="#f5f5f5"
-              stroke="#ccc"
-              strokeWidth="2"
-            />
+            <svg viewBox="120 60 800 500">
+              <path
+                d={tunisiaOutline}
+                fill="#f5f5f5"
+                stroke="#ccc"
+                strokeWidth="2"
+              />
+            </svg>
           )}
 
           {/* Draw traffic lines */}
@@ -517,7 +519,7 @@ export default function TrafficMap({ product, period, viewType }) {
         )}
 
         {/* Legend with toggle switches */}
-        <div className="absolute bottom-4 right-4 max-h-[250px] w-64 overflow-y-auto rounded-md bg-white p-3 shadow-md">
+        <div className="absolute bottom-4 right-4 max-h-[280px] w-64 overflow-y-auto rounded-md bg-white p-3 shadow-md">
           <div className="mb-2 text-sm font-medium">{t("legend", "admin")}</div>
 
           {/* Map Elements */}
