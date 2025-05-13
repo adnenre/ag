@@ -19,14 +19,15 @@ import { toast } from "@/components/ui/use-toast";
 import { Toaster } from "@/components/ui/toaster";
 import { useLanguage } from "@/contexts/language-context";
 import { LanguageSwitcher } from "@/components/language-switcher";
-
+import { useAuth } from "@/contexts/AuthContext"; // Import the auth context
 export default function Navbar() {
   const pathname = usePathname();
   const router = useRouter();
   const { t } = useLanguage();
 
+  const { isAuthenticated, user, logout } = useAuth();
   // Mock authentication state - in a real app, this would come from your auth provider
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
   const [userRole, setUserRole] = useState(""); // or "agent" or "admin"
 
   // Check if we're in the admin section
@@ -86,7 +87,7 @@ export default function Navbar() {
       title: t("success", "general"),
       description: t("logout", "general"),
     });
-
+    logout();
     // In a real app, you would clear auth state here
     setTimeout(() => {
       router.push("/login");
