@@ -16,19 +16,19 @@ export default function About() {
       name: "Mariem Bouajina",
       role: "Co-Founder",
       //bio: "Former agricultural economist with 10 years in market analysis",
-      avatar: "/team/priya.jpg",
+      avatar: "/teams/mariem.webp",
     },
     {
       name: "Fares Ajround",
       role: "Co-Founder",
       // bio: "Full-stack developer specializing in rural tech solutions",
-      avatar: "/team/rajesh.jpg",
+      avatar: "/teams/fares.webp",
     },
     {
       name: "Adnen Rebai",
       role: "Co-Founder",
       //bio: "Supply chain expert with focus on perishable goods",
-      avatar: "/team/ananya.jpg",
+      avatar: "/teams/adnen.webp",
     },
   ];
 
