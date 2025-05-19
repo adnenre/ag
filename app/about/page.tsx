@@ -35,18 +35,35 @@ export default function About() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-green-50 to-white">
       {/* Hero Section */}
-      <section className="py-20 px-4 max-w-6xl mx-auto text-center">
-        <h1 className="text-4xl md:text-5xl font-bold text-green-800 mb-6">
-          We bring agriculture to excellence
-        </h1>
-        <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-10">
-          Farmers often lack timely and accurate information about demand trends
-          in wholesale markets, leading to production mismatches and lost sales
-          opportunities.
-        </p>
-      </section>
+      <section
+        className="min-h-screen flex flex-col md:flex-row relative"
+        style={{
+          backgroundImage: "url('/vegetables/vegitable1.jpg')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
+        {/* Overlay to make text more readable (optional) */}
 
-      <section className="py-20   mx-auto text-center bg-green-800">
+        {/* Spacer column (left side) - empty but maintains layout */}
+        <div className="hidden md:block md:w-1/3"></div>
+
+        {/* Content column (right side) */}
+        <div className="w-full md:w-2/3 flex  items-center justify-center p-4 relative z-10">
+          <div className=" text-center md:text-right bg-white bg-opacity-50 p-8 rounded-lg">
+            <h1 className="text-4xl md:text-5xl font-bold text-green-800 mb-6 text-center">
+              We bring agriculture to excellence
+            </h1>
+            <p className="text-xl text-gray-600 mb-10 text-center">
+              Farmers often lack timely and accurate information about demand
+              trends in wholesale markets, leading to production mismatches and
+              lost sales opportunities.
+            </p>
+          </div>
+        </div>
+      </section>
+      {/* introducing */}
+      <section className="min-h-screen flex items-center justify-center py-20    mx-auto text-center bg-green-800">
         <div className="bg-white rounded-xl shadow-lg p-8 max-w-4xl mx-auto">
           <h2 className="text-3xl font-semibold text-green-700 mb-4">
             Introducing AgriConnect
@@ -70,7 +87,7 @@ export default function About() {
       </section>
 
       {/* Our Values Section - Add this before the Team Section */}
-      <section className="py-20 bg-white">
+      <section className="min-h-screen py-20 bg-white">
         <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-16 text-green-800">
             Our Values
@@ -213,39 +230,48 @@ export default function About() {
       </section>
 
       {/* Team Section */}
-      <section className="py-20 max-w-6xl mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center mb-16 text-green-800">
-          Our Team
-        </h2>
+      <section className="min-h-screen flex justify-center items-center  max-w-6xl mx-auto px-4">
+        <div className="">
+          <h2 className="text-3xl font-bold text-center mb-16 text-green-800">
+            Our Team
+          </h2>
 
-        <div className="grid sm:grid-cols-3 gap-8">
-          {teamMembers.map((member, index) => (
-            <Card key={index} className="hover:shadow-xl transition-shadow">
-              <CardHeader className="items-center">
-                <Avatar className="w-24 h-24 mb-4">
-                  <AvatarImage src={member.avatar} />
-                  <AvatarFallback>{member.name.charAt(0)}</AvatarFallback>
-                </Avatar>
-                <CardTitle>{member.name}</CardTitle>
-                <CardDescription className="text-green-800">
-                  {member.role}
-                </CardDescription>
-              </CardHeader>
-              {/* <CardContent className="text-center">
+          <div className="grid sm:grid-cols-3 gap-8">
+            {teamMembers.map((member, index) => (
+              <Card key={index} className="hover:shadow-xl transition-shadow">
+                <CardHeader className="items-center">
+                  <Avatar className="w-24 h-24 mb-4">
+                    <AvatarImage src={member.avatar} />
+                    <AvatarFallback>{member.name.charAt(0)}</AvatarFallback>
+                  </Avatar>
+                  <CardTitle>{member.name}</CardTitle>
+                  <CardDescription className="text-green-800">
+                    {member.role}
+                  </CardDescription>
+                </CardHeader>
+                {/* <CardContent className="text-center">
                 <p>{member.bio}</p>
               </CardContent> */}
-            </Card>
-          ))}
+              </Card>
+            ))}
+          </div>
+          <p className="bold text-xl mt-12 text-center text-green-800 max-w-4xl mx-auto">
+            "AgriConnect adapts to different regional markets and integrates new
+            features based on user feedback and evolving industry needs. "
+          </p>
         </div>
-        <p className="bold text-xl mt-12 text-center text-green-800 max-w-4xl mx-auto">
-          "AgriConnect adapts to different regional markets and integrates new
-          features based on user feedback and evolving industry needs. "
-        </p>
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-green-50">
-        <div className="max-w-4xl mx-auto text-center px-4">
+      <section
+        className="min-h-screen bg-green-50 flex justify-center items-center relative"
+        style={{
+          backgroundImage: "url('/vegetables/vegitable2.png')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
+        <div className="max-w-4xl mx-auto text-center px-4 bg-white bg-opacity-50 p-8 rounded-lg z-10">
           <h2 className="text-3xl font-bold text-green-800 mb-6">
             Ready to transform agricultural markets?
           </h2>
