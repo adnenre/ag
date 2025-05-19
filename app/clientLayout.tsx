@@ -56,23 +56,13 @@ export default function ClientRootLayout({
   );
 }
 
-// Footer component with translation support
 function Footer() {
-  return (
-    <LanguageProvider>
-      <FooterContent />
-    </LanguageProvider>
-  );
-}
-
-function FooterContent() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
 
   return (
     <footer className="border-t py-6 md:py-8">
       <div className="container flex flex-col items-center justify-center gap-4 md:flex-row md:gap-8">
-        <p className="text-center text-sm text-muted-foreground">
-          © {new Date().getFullYear()} {t("appName", "general")}.{" "}
+        <p className="text-center text-sm text-muted-foreground ltr">
           {t("allRightsReserved", "general")}.
         </p>
       </div>
