@@ -74,13 +74,13 @@ export default function About() {
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4 ">
             <Button className="bg-green-600 hover:bg-green-700">
-              <Link href="/register/farmer"> Join as Farmer</Link>
+              <Link href="/register"> Join as Farmer</Link>
             </Button>
             <Button
               variant="outline"
               className="text-green-600 border-green-600"
             >
-              <Link href="/register/agent"> Join as Agent</Link>
+              <Link href="/register"> Join as Agent</Link>
             </Button>
           </div>
         </div>
