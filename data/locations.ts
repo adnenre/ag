@@ -1,0 +1,16 @@
+export const TUNISIA_REGIONS = [
+  "Dakar",
+  "Thiès",
+  "Diourbel",
+  "Fatick",
+  "Kaffrine",
+  "Kaolack",
+  "Kédougou",
+  "Kolda",
+  "Louga",
+  "Matam",
+  "Saint-Louis",
+  "Sédhiou",
+  "Tambacounda",
+  "Ziguinchor",
+];

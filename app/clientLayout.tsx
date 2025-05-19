@@ -10,6 +10,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { LanguageProvider } from "@/contexts/language-context";
 import { useLanguage } from "@/contexts/language-context";
 import { AuthProvider } from "@//contexts/AuthContext";
+import { RegistrationProvider } from "@/contexts/RegistrationContext";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function ClientRootLayout({
@@ -42,12 +43,16 @@ export default function ClientRootLayout({
         <ThemeProvider attribute="class" defaultTheme="light">
           <LanguageProvider>
             <AuthProvider>
-              <div className="min-h-screen flex flex-col">
-                <Navbar />
-                <main className="flex-1">{children}</main>
-                <Footer />
-              </div>
-              <Toaster />
+              <RegistrationProvider>
+                <div className="min-h-screen flex flex-col">
+                  <Navbar />
+
+                  <main className="flex-1">{children}</main>
+
+                  <Footer />
+                </div>
+                <Toaster />
+              </RegistrationProvider>
             </AuthProvider>
           </LanguageProvider>
         </ThemeProvider>

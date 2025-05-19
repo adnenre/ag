@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import {
@@ -20,11 +20,14 @@ import { toast } from "@/components/ui/use-toast";
 import { Toaster } from "@/components/ui/toaster";
 
 import { LocationAdress } from "@/components/LocationAdress";
-import { LocationFarmer } from "@/components/locationFarmer";
+import { LocationFarmer } from "@/components/auth/locationFarmer";
 import { useLanguage } from "@/contexts/language-context";
+
+import { useSearchParams } from "next/navigation";
 export default function RegisterPage() {
   const { t } = useLanguage();
-  const [userType, setUserType] = useState("agent");
+  const searchParams = useSearchParams();
+  const [userType, setSelectedUserType] = useState("agent");
   const router = useRouter();
 
   const handleRegister = (e) => {
@@ -39,6 +42,13 @@ export default function RegisterPage() {
       router.push("/login");
     }, 1500);
   };
+  // Read URL param on component mount
+  useEffect(() => {
+    const selectedUser = searchParams.get("selectedUser");
+    if (selectedUser) {
+      setSelectedUserType(selectedUser); // Update state if URL has `?option=...`
+    }
+  }, [searchParams]);
 
   return (
     <div className="container flex h-screen w-screen flex-col items-center justify-center">
@@ -70,7 +80,7 @@ export default function RegisterPage() {
                   <RadioGroup
                     defaultValue="agent"
                     value={userType}
-                    onValueChange={setUserType}
+                    onValueChange={setSelectedUserType}
                     className="flex space-x-2 justify-center items-center"
                   >
                     <div className="flex items-center space-x-2">

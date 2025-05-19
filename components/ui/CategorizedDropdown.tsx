@@ -50,7 +50,7 @@ export function CategorizedDropdown({
           variant="outline"
           role="combobox"
           aria-expanded={open}
-          className="w-[300px] justify-between"
+          className="w-full justify-between"
         >
           {value
             ? categories
