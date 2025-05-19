@@ -177,7 +177,7 @@ export default function UserDetailsForm() {
                   <FormControl>
                     <Input
                       type="email"
-                      placeholder="john.doe@example.com"
+                      placeholder="email@example.com"
                       {...field}
                     />
                   </FormControl>
