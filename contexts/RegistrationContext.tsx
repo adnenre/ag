@@ -27,6 +27,8 @@ export interface RegistrationData {
   userType: UserType | null;
   name: string;
   email: string;
+  password: string;
+  passwordConfirmation: string;
   location: string;
   // Farmer specific
   farmSize?: string;
@@ -51,6 +53,8 @@ const initialState: RegistrationData = {
   name: "",
   email: "",
   location: "",
+  password: "",
+  passwordConfirmation: "",
 };
 
 const RegistrationContext = createContext<RegistrationContextProps | undefined>(

@@ -88,7 +88,7 @@ export default function UserTypeSelectionForm() {
                     <RadioGroup
                       onValueChange={field.onChange}
                       defaultValue={field.value}
-                      className="flex flex-col space-y-2 md:flex-row md:space-y-0 md:space-x-4"
+                      className="flex   "
                     >
                       <FormItem className="flex-1">
                         <FormControl>
@@ -120,11 +120,12 @@ export default function UserTypeSelectionForm() {
                         </FormControl>
                         <FormLabel
                           htmlFor="agent"
-                          className={`flex flex-col items-center justify-center rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground cursor-pointer ${
-                            field.value === "agent"
-                              ? "border-primary ring-2 ring-primary"
-                              : ""
-                          }`}
+                          className={`flex flex-col items-center justify-center rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground cursor-pointer 
+                            ${
+                              field.value === "agent"
+                                ? "border-primary ring-2 ring-primary"
+                                : ""
+                            }`}
                         >
                           <Briefcase className="mb-3 h-8 w-8 text-primary" />
                           Agent
