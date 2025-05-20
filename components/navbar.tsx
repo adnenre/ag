@@ -3,7 +3,14 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { UserCircle, Menu, Shield, LogOut } from "lucide-react";
+import {
+  UserCircle,
+  Menu,
+  Shield,
+  LogOut,
+  LogIn,
+  UserPlus,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -219,10 +226,21 @@ export default function Navbar() {
             ) : (
               <div className="flex gap-2">
                 <Button variant="ghost" asChild>
-                  <Link href="/login">{t("login", "navigation")}</Link>
+                  <Link href="/login">
+                    <LogIn className="h-5 w-5 md:hidden" />
+                    <span className="hidden md:inline">
+                      {t("login", "navigation")}
+                    </span>
+                  </Link>
                 </Button>
                 <Button asChild>
-                  <Link href="/register">{t("register", "navigation")}</Link>
+                  <Link href="/register">
+                    {" "}
+                    <UserPlus className="h-5 w-5 md:hidden" />
+                    <span className="hidden md:inline">
+                      {t("register", "navigation")}
+                    </span>
+                  </Link>
                 </Button>
               </div>
             )}
