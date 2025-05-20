@@ -257,10 +257,6 @@ export const LocationFarmer: FC<LocationDropdownProps> = ({
           value: "Sabkhet el Kalbia",
           label: "Sabkhet el Kalbia",
         },
-        {
-          value: "Sidi el Heni",
-          label: "Sidi el Heni",
-        },
       ],
     },
     {
@@ -310,18 +306,12 @@ export const LocationFarmer: FC<LocationDropdownProps> = ({
           value: "Ksibet el mediouni",
           label: "Ksibet el mediouni",
         },
-        {
-          value: "Jammel",
-          label: "Jammel",
-        },
+
         {
           value: "Zeramdine",
           label: "Zeramdine",
         },
-        {
-          value: "Ksibet el mediouni",
-          label: "Ksibet el mediouni",
-        },
+
         {
           value: "Sayada",
           label: "Sayada",
@@ -334,14 +324,7 @@ export const LocationFarmer: FC<LocationDropdownProps> = ({
           value: "Bouhjar",
           label: "Bouhjar",
         },
-        {
-          value: "Jammel",
-          label: "Jammel",
-        },
-        {
-          value: "Zeramdine",
-          label: "Zeramdine",
-        },
+
         {
           value: "Bembla",
           label: "Bembla",
@@ -501,7 +484,7 @@ export const LocationFarmer: FC<LocationDropdownProps> = ({
         { value: "Sidi Aiech", label: "Sidi Aiech" },
         { value: "E-Snad", label: "E-Snad" },
         { value: "El guetar", label: "El guetar" },
-        { value: "Gafsa Nord", label: "Gafsa Nord" },
+
         { value: "Gafsa Sud", label: "Gafsa Sud" },
         { value: "Gafsa Nord", label: "Gafsa Nord" },
         { value: "El Ksar", label: "El Ksar" },
@@ -538,7 +521,9 @@ export const LocationFarmer: FC<LocationDropdownProps> = ({
   const agentLocations = [
     {
       name: t("g_Tunis", "gouvernorate"),
-      items: [{ value: "Marché de gros", label: "Marché de gros" }],
+      items: [
+        { value: "Marché de gros de Tunis", label: "Marché de gros de Tunis" },
+      ],
     },
     {
       name: t("g_Ariana", "gouvernorate"),
