@@ -46,51 +46,36 @@ const users = [
     role: "agent",
     name: "Lisa Market",
   },
-  { username: "admin", password: "admin", role: "admin", name: "Admin User" },
+  {
+    username: "admin@gmail.com",
+    password: "admin123",
+    role: "admin",
+    name: "Admin",
+  },
 ];
 
 export default function LoginPage() {
   const router = useRouter();
   const { t } = useLanguage();
+  const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const { login } = useAuth();
-  const handleLogin = (e) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
 
-    // Simulate API call delay
-    setTimeout(() => {
-      const user = users.find(
-        (u) =>
-          u.username.toLowerCase() === username.toLowerCase() &&
-          u.password === password
-      );
-
-      if (user) {
-        login(username, password);
-        toast({
-          title: t("success", "general"),
-          description: t("welcomeBack", "auth").replace("{name}", user.name),
-        });
-
-        // Redirect based on role
-        if (user.role === "admin") {
-          router.push("/admin/official-prices");
-        } else {
-          router.push("/dashboard");
-        }
-      } else {
-        toast({
-          title: t("error", "general"),
-          description: t("invalidCredentials", "auth"),
-          variant: "destructive",
-        });
-        setIsLoading(false);
-      }
-    }, 1000);
+    try {
+      await login(email, password);
+      // No need to handle redirects here as they're handled in the auth provider
+    } catch (error) {
+      // Error is already handled in the auth provider
+      console.error("Sign in error in component:", error);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -123,10 +108,10 @@ export default function LoginPage() {
               <div className="grid gap-2">
                 <Label htmlFor="username">{t("name", "general")}</Label>
                 <Input
-                  id="username"
+                  id="email"
                   placeholder={t("emailPlaceholder", "auth")}
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   required
                 />
               </div>

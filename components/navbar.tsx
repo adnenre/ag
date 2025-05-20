@@ -95,10 +95,6 @@ export default function Navbar() {
       description: t("logout", "general"),
     });
     logout();
-    // In a real app, you would clear auth state here
-    setTimeout(() => {
-      router.push("/login");
-    }, 1000);
   };
 
   return (

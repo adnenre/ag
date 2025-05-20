@@ -27,6 +27,9 @@ import { Separator } from "@/components/ui/separator";
 // LocationDropdown is no longer used here for selection
 import { useToast } from "@/hooks/use-toast";
 import { Loader2 } from "lucide-react";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { doc, setDoc } from "firebase/firestore";
+import { auth, db } from "@/lib/firebase";
 
 const baseSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
@@ -39,7 +42,7 @@ const baseSchema = z.object({
 });
 
 const farmerSchema = baseSchema.extend({
-  farmSize: z.string().min(1, "Farm size is required (e.g., 5 Ha)"),
+  // farmSize: z.string().min(1, "Farm size is required (e.g., 5 Ha)"),
   crops: z.string().min(3, "Crops are required (e.g., Maize, Beans)"),
 });
 
@@ -72,8 +75,8 @@ export default function UserDetailsForm() {
       phoneNumber:
         formData.firebaseUser?.phoneNumber || formData.phoneNumber || "",
       location: formData.location || "", // Pre-fill from context
-      farmSize:
-        formData.userType === "farmer" ? formData.farmSize || "" : undefined,
+      // farmSize:
+      //   formData.userType === "farmer" ? formData.farmSize || "" : undefined,
       crops:
         formData.userType === "farmer"
           ? formData.crops?.join(", ") || ""
@@ -127,19 +130,67 @@ export default function UserDetailsForm() {
         : undefined,
       currentLogicalStep: "completed",
     }));
+    try {
+      const { email, password, name, phoneNumber, userType: role } = formData;
+      // Create user with email and password
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      const user = userCredential.user;
 
-    toast({
-      title: "Registration Complete!",
-      description: "Your details have been saved successfully.",
-    });
+      // Update profile with display name
+      await updateProfile(user, {
+        displayName: name,
+      });
 
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+      // Store additional user data in Firestore
+      await setDoc(doc(db, "users", user.uid), {
+        name,
+        email,
+        phoneNumber,
+        role,
+        createdAt: new Date().toISOString(),
+      }).then(() => {
+        router.replace("/profile");
+      });
+      toast({
+        title: "Registration Complete!",
+        description: "Your details have been saved successfully.",
+      });
 
-    resetForm();
-    router.push("/");
-    setLoading(false);
+      resetForm();
+
+      setLoading(false);
+    } catch (error: any) {
+      console.error("Registration error:", error);
+
+      // Handle specific Firebase error codes
+      let errorMessage = "There was an error creating your account.";
+
+      if (error.code === "auth/operation-not-allowed") {
+        errorMessage =
+          "Email/password sign-in is not enabled. Please contact the administrator.";
+      } else if (error.code === "auth/email-already-in-use") {
+        errorMessage =
+          "This email is already in use. Please try another email or sign in.";
+      } else if (error.code === "auth/invalid-email") {
+        errorMessage = "The email address is not valid.";
+      } else if (error.code === "auth/weak-password") {
+        errorMessage =
+          "The password is too weak. Please use a stronger password.";
+      }
+
+      toast({
+        variant: "destructive",
+        title: "Registration failed",
+        description: errorMessage,
+      });
+    } finally {
+      setLoading(false);
+    }
   }
-
   if (!formData.userType) {
     // This should ideally be caught by the page.tsx guard and redirected.
     // If it still occurs, it implies a logic error or direct navigation attempt.
@@ -243,11 +294,11 @@ export default function UserDetailsForm() {
               )}
             />
 
-            <Separator className="my-6" />
-
             {formData.userType === "farmer" && (
               <>
-                <FormField
+                {/* 
+              <Separator className="my-6" />
+                 <FormField
                   control={form.control}
                   name="farmSize"
                   render={({ field }) => (
@@ -259,7 +310,7 @@ export default function UserDetailsForm() {
                       <FormMessage />
                     </FormItem>
                   )}
-                />
+                /> */}
                 <FormField
                   control={form.control}
                   name="crops"

@@ -1,8 +1,20 @@
-import type { ReactNode } from "react"
-import Link from "next/link"
-import { LayoutDashboard, Users, ShoppingBasket, FileText, Settings, LogOut, Map, Layers } from "lucide-react"
-
+"use client";
+import type { ReactNode } from "react";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import {
+  LayoutDashboard,
+  Users,
+  ShoppingBasket,
+  FileText,
+  Settings,
+  LogOut,
+  Map,
+  Layers,
+} from "lucide-react";
+import { useAuth } from "@/contexts/AuthContext";
 export default function AdminLayout({ children }: { children: ReactNode }) {
+  const { logout } = useAuth();
   return (
     <div className="flex min-h-screen">
       {/* Admin Sidebar */}
@@ -10,7 +22,9 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
         <div className="flex h-16 items-center border-b border-gray-800 px-6">
           <Link href="/admin" className="flex items-center gap-2 font-semibold">
             <span className="text-xl text-green-400">AgriConnect</span>
-            <span className="rounded bg-green-600 px-1.5 py-0.5 text-xs font-medium">Admin</span>
+            <span className="rounded bg-green-600 px-1.5 py-0.5 text-xs font-medium">
+              Admin
+            </span>
           </Link>
         </div>
         <div className="flex-1 overflow-auto py-4">
@@ -67,13 +81,10 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
           </nav>
         </div>
         <div className="mt-auto p-4">
-          <Link
-            href="/"
-            className="flex w-full items-center gap-3 rounded-lg bg-gray-800 px-3 py-2 text-sm font-medium text-gray-300 transition-all hover:text-white"
-          >
-            <LogOut className="h-4 w-4" />
-            Exit Admin
-          </Link>
+          <Button variant="destructive" className="w-full" onClick={logout}>
+            <LogOut className="mr-2 h-4 w-4" />
+            Sign Out
+          </Button>
         </div>
       </div>
 
@@ -81,11 +92,13 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
       <div className="flex flex-1 flex-col">
         <header className="sticky top-0 z-10 flex h-16 items-center gap-4 border-b bg-background px-6">
           <Link href="/admin" className="md:hidden">
-            <span className="text-xl font-semibold text-green-600">AgriConnect Admin</span>
+            <span className="text-xl font-semibold text-green-600">
+              AgriConnect Admin
+            </span>
           </Link>
         </header>
         <main className="flex-1">{children}</main>
       </div>
     </div>
-  )
+  );
 }

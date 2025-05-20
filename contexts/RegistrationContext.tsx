@@ -31,7 +31,7 @@ export interface RegistrationData {
   passwordConfirmation: string;
   location: string;
   // Farmer specific
-  farmSize?: string;
+  //farmSize?: string;
   crops?: string[];
   // Agent specific
   agencyName?: string;

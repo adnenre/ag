@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -34,26 +34,33 @@ import {
   Calendar,
   BarChart3,
 } from "lucide-react";
+import { useAuth } from "@/contexts/AuthContext";
+import { useRouter } from "next/navigation";
+import { DateTime } from "@/components/ui/DateTime";
 
 export default function ProfilePage() {
+  const { isAuthenticated, user, loading, logout } = useAuth();
+  console.log("€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€e");
+  console.log(user);
+  const router = useRouter();
   // Mock user data - in a real app, this would come from your auth provider
-  const [user] = useState({
-    name: "Mohamed",
-    username: "agent1",
-    email: "Mohamed@marketagent.com",
-    role: "agent", // Change to "agent" to see the market agent profile
-    companyName: "Fresh Foods Co.",
-    location: "marché de gros bir el elkasaa",
-    bio: "Regional market agent in Bir el Kasaa",
-    phone: "00216 000 999",
-    memberSince: "March 2021",
-    subscriptionTier: "Pro",
-    profileImage: "/placeholder.svg?height=100&width=100",
-    website: "www.example.com",
-    marketRegions: ["Midwest", "Great Lakes"],
-    preferredProducts: ["Vegetables", "Fruits", "Organic Produce"],
-    averagePurchaseVolume: "25,00 TND/month",
-  });
+  // const [user] = useState({
+  //   name: "Mohamed",
+  //   username: "agent1",
+  //   email: "Mohamed@marketagent.com",
+  //   role: "agent", // Change to "agent" to see the market agent profile
+  //   companyName: "Fresh Foods Co.",
+  //   location: "marché de gros bir el elkasaa",
+  //   bio: "Regional market agent in Bir el Kasaa",
+  //   phone: "00216 000 999",
+  //   memberSince: "March 2021",
+  //   subscriptionTier: "Pro",
+  //   profileImage: "/placeholder.svg?height=100&width=100",
+  //   website: "www.example.com",
+  //   marketRegions: ["Midwest", "Great Lakes"],
+  //   preferredProducts: ["Vegetables", "Fruits", "Organic Produce"],
+  //   averagePurchaseVolume: "25,00 TND/month",
+  // });
 
   // Mock previous requests data for market agents
   const [previousRequests] = useState([
@@ -150,7 +157,15 @@ export default function ProfilePage() {
       description: "Your password has been changed successfully.",
     });
   };
+  useEffect(() => {
+    if (!loading && !isAuthenticated) {
+      router.push("/");
+    }
+  }, [isAuthenticated, loading, router]);
 
+  if (!isAuthenticated || !user) {
+    return null;
+  }
   return (
     <div className="flex-1 space-y-4 p-4 md:p-8 pt-6">
       <div className="flex items-center justify-between space-y-2">
@@ -166,7 +181,7 @@ export default function ProfilePage() {
           <CardContent className="flex flex-col items-center text-center">
             <Avatar className="h-24 w-24 mb-4">
               <AvatarImage
-                src={user.profileImage || "/placeholder.svg"}
+                src={user?.profileImage || "/placeholder.svg"}
                 alt={user.name}
               />
               <AvatarFallback>
@@ -189,7 +204,7 @@ export default function ProfilePage() {
                 variant="outline"
                 className="bg-blue-50 text-blue-700 hover:bg-blue-50"
               >
-                {user.subscriptionTier}
+                {user?.subscriptionTier}
               </Badge>
             </div>
             <div className="mt-6 w-full space-y-4 text-left">
@@ -200,7 +215,7 @@ export default function ProfilePage() {
                     {user.role === "farmer" ? "Farm Name" : "Company"}
                   </p>
                   <p>
-                    {user.role === "farmer" ? user.farmName : user.companyName}
+                    {user.role === "farmer" ? user?.farmName : user.companyName}
                   </p>
                 </div>
               </div>
@@ -219,7 +234,7 @@ export default function ProfilePage() {
                   <p className="text-sm font-medium text-muted-foreground">
                     Phone
                   </p>
-                  <p>{user.phone}</p>
+                  <p>{user.phoneNumber}</p>
                 </div>
               </div>
               <div className="flex items-center">
@@ -237,7 +252,8 @@ export default function ProfilePage() {
                   <p className="text-sm font-medium text-muted-foreground">
                     Member Since
                   </p>
-                  <p>{user.memberSince}</p>
+                  {/* <p>{new Date(user.createdAt).toLocaleDateString()}</p> */}
+                  <DateTime date={user.createdAt} />
                 </div>
               </div>
               {user.role === "agent" && (
@@ -291,7 +307,7 @@ export default function ProfilePage() {
                   <div className="grid grid-cols-2 gap-4">
                     <div className="grid gap-2">
                       <Label htmlFor="phone">Phone Number</Label>
-                      <Input id="phone" defaultValue={user.phone} />
+                      <Input id="phone" defaultValue={user.phoneNumber} />
                     </div>
                     <div className="grid gap-2">
                       <Label htmlFor="location">Location</Label>
