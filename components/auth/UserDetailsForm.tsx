@@ -30,9 +30,12 @@ import { Loader2 } from "lucide-react";
 
 const baseSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
+
   email: z.string().email("Invalid email address"),
   phoneNumber: z.string().optional(), // Will be pre-filled and disabled
   location: z.string().min(1, "Location is required"), // Will be pre-filled and disabled
+  password: z.string().min(5, "Name must be at least 5 characters"),
+  passwordConfirmation: z.string().min(5, "Name must be at least 5 characters"),
 });
 
 const farmerSchema = baseSchema.extend({
@@ -64,6 +67,8 @@ export default function UserDetailsForm() {
     defaultValues: {
       name: formData.name || "",
       email: formData.email || "",
+      password: formData.password || "",
+      passwordConfirmation: formData.passwordConfirmation || "",
       phoneNumber:
         formData.firebaseUser?.phoneNumber || formData.phoneNumber || "",
       location: formData.location || "", // Pre-fill from context
@@ -162,7 +167,33 @@ export default function UserDetailsForm() {
                 <FormItem>
                   <FormLabel>Full Name</FormLabel>
                   <FormControl>
-                    <Input placeholder="John Doe" {...field} />
+                    <Input placeholder="Your Name" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="password"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Password</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Password" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="passwordConfirmation"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Password Confirmation</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Password Confirmation" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
