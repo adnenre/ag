@@ -1,5 +1,6 @@
 import type React from "react";
 import ClientRootLayout from "./clientLayout";
+import { Analytics } from "@vercel/analytics/react";
 
 // Export metadata function to be dynamic with language
 
@@ -27,7 +28,12 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <ClientRootLayout>{children}</ClientRootLayout>;
+  return (
+    <ClientRootLayout>
+      {children}
+      <Analytics />
+    </ClientRootLayout>
+  );
 }
 
 import "./globals.css";
