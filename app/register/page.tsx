@@ -25,7 +25,7 @@ const RegisterPage = () => {
         Registration Currently Closed
       </h1>
 
-      <p className="text-gray-600 mb-6">
+      <p className="text-gray-600 mb-6 text-center">
         We're working hard to give you the best experience.
       </p>
 
