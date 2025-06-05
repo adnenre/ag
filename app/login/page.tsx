@@ -79,7 +79,7 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="container flex h-screen w-screen flex-col items-center justify-center">
+    <div className="container flex min-h-[calc(100vh-4rem)] w-screen flex-col items-center justify-center">
       <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
         <div className="flex flex-col space-y-2 text-center">
           <h1 className="text-2xl font-semibold tracking-tight">
@@ -169,7 +169,7 @@ export default function LoginPage() {
         </Card>
 
         <div className="px-8 text-center text-sm text-muted-foreground">
-          <p>{t("demoAccounts", "auth")}</p>
+          {/* <p>{t("demoAccounts", "auth")}</p>
           <p className="mt-1">
             <span className="font-semibold">{t("farmer", "auth")}:</span>{" "}
             farmer1 / password
@@ -177,7 +177,7 @@ export default function LoginPage() {
           <p>
             <span className="font-semibold">{t("agent", "auth")}:</span> agent1
             / password
-          </p>
+          </p> */}
           {/* <p>
             <span className="font-semibold">{t("admin", "auth")}:</span> admin / admin
           </p> */}
