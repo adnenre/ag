@@ -154,7 +154,7 @@ export default function Home() {
             <div className="space-y-2">
               <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
                 {t("joinToday_join", "general")}
-                <span className="text-green-600"> AgriConnect</span>
+                <span className="text-green-600"> AgTunisie</span>
                 {t("joinToday_today", "general")}
               </h2>
               <p className="max-w-[600px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">

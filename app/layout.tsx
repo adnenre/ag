@@ -12,14 +12,14 @@ export const viewport = {
 };
 
 export const metadata = {
-  title: "AgriConnect - Connecting Farmers and Markets",
+  title: "AgTunisie - Connecting Farmers and Markets",
   description:
     "Platform for farmers and regional market agents to exchange requests",
   manifest: "/manifest.json",
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
-    title: "AgriConnect",
+    title: "AgTunisie",
   },
   generator: "v0.dev",
 };

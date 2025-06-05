@@ -1,6 +1,6 @@
 {
-  "name": "AgriConnect",
-  "short_name": "AgriConnect",
+  "name": "AgTunisie",
+  "short_name": "AgTunisie",
   "description": "Platform for farmers and regional market agents to exchange requests",
   "start_url": "/",
   "display": "standalone",

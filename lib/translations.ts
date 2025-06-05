@@ -32,13 +32,13 @@ export const translations: Translations = {
     general: {
       connecting_farmers_markets: "Connecting Farmers with Markets",
       appDescription:
-        "AgriConnect bridges the gap between farmers and regional market agents, making it easier to exchange requests and manage inventory.",
+        "AgTunisie bridges the gap between farmers and regional market agents, making it easier to exchange requests and manage inventory.",
       getStarted: "Get Started",
       learnMore: "Learn More",
       howItWorks: "How It Works",
       platformDescription:
         "Our platform simplifies the connection between farmers and regional market agents.",
-      appName: "AgriConnect",
+      appName: "AgTunisie",
       forFarmers: "For Farmers",
       farmersDescription:
         "Manage your inventory, view market requests, and connect with regional agents looking for your products.",
@@ -127,7 +127,7 @@ export const translations: Translations = {
       termsOfService: "Terms of Service",
       privacyPolicy: "Privacy Policy",
       copyright: "Copyright",
-      allRightsReserved: "© AgriConnect 2025 - All Rights Reserved",
+      allRightsReserved: "© AgTunisie 2025 - All Rights Reserved",
       language: "Language",
       theme: "Theme",
       darkMode: "Dark Mode",
@@ -149,7 +149,7 @@ export const translations: Translations = {
       register: "Register",
     },
     auth: {
-      loginTitle: "Login to AgriConnect",
+      loginTitle: "Login to AgTunisie",
       loginSubtitle: "Enter your credentials to access your account",
       registerTitle: "Create an account",
       registerSubtitle: "Enter your details below to create your account",
@@ -316,7 +316,7 @@ export const translations: Translations = {
     settings: {
       title: "Settings",
       appearance: "Appearance",
-      appearanceDesc: "Customize how AgriConnect looks for you",
+      appearanceDesc: "Customize how AgTunisie looks for you",
       notifications: "Notifications",
       notificationsDesc: "Manage your notification preferences",
       languageRegion: "Language & Region",
@@ -494,7 +494,7 @@ export const translations: Translations = {
       platformDescription:
         "Notre plateforme simplifie la mise en relation entre les agriculteurs et les agents des marchés régionaux.",
 
-      appName: "AgriConnect",
+      appName: "AgTunisie",
       forFarmers: "Pour les agriculteurs",
       farmersDescription:
         "Gérez votre inventaire, consultez les demandes de marché et contactez les agents régionaux à la recherche de vos produits.",
@@ -583,7 +583,7 @@ export const translations: Translations = {
       termsOfService: "Conditions d'utilisation",
       privacyPolicy: "Politique de confidentialité",
       copyright: "Droits d'auteur",
-      allRightsReserved: "© AgriConnect 2025 - Tous droits réservés",
+      allRightsReserved: "© AgTunisie 2025 - Tous droits réservés",
       language: "Langue",
       theme: "Thème",
       darkMode: "Mode sombre",
@@ -605,7 +605,7 @@ export const translations: Translations = {
       register: "S'inscrire",
     },
     auth: {
-      loginTitle: "Connexion à AgriConnect",
+      loginTitle: "Connexion à AgTunisie",
       loginSubtitle: "Entrez vos identifiants pour accéder à votre compte",
       registerTitle: "Créer un compte",
       registerSubtitle:
@@ -776,7 +776,7 @@ export const translations: Translations = {
     settings: {
       title: "Paramètres",
       appearance: "Apparence",
-      appearanceDesc: "Personnalisez l'apparence d'AgriConnect pour vous",
+      appearanceDesc: "Personnalisez l'apparence d'AgTunisie pour vous",
       notifications: "Notifications",
       notificationsDesc: "Gérez vos préférences de notification",
       languageRegion: "Langue et région",
@@ -968,7 +968,7 @@ export const translations: Translations = {
       joinToday_join: " انضم إلى ",
       joinToday_today: "اليوم ",
       connectToday: "ابدأ بالتواصل مع المزارعين ووكلاء السوق في منطقتك.",
-      appName: "AgriConnect",
+      appName: "AgTunisie",
       loading: "جاري التحميل...",
       save: "حفظ",
       cancel: "إلغاء",
@@ -1040,7 +1040,7 @@ export const translations: Translations = {
       termsOfService: "شروط الخدمة",
       privacyPolicy: "سياسة الخصوصية",
       copyright: "حقوق النشر",
-      allRightsReserved: "© AgriConnect 2025 - جميع الحقوق محفوظة",
+      allRightsReserved: "© AgTunisie 2025 - جميع الحقوق محفوظة",
       language: "اللغة",
       theme: "السمة",
       darkMode: "الوضع الداكن",

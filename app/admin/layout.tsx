@@ -70,7 +70,7 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
               href="/admin"
               className="flex items-center gap-2 font-semibold"
             >
-              <span className="text-xl text-green-400">AgriConnect</span>
+              <span className="text-xl text-green-400">AgTunisie</span>
               <span className="rounded bg-green-600 px-1.5 py-0.5 text-xs font-medium">
                 Admin
               </span>
@@ -130,7 +130,7 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
                 href="/admin"
                 className="flex items-center gap-2 font-semibold"
               >
-                <span className="text-xl text-green-400">AgriConnect</span>
+                <span className="text-xl text-green-400">AgTunisie</span>
                 <span className="rounded bg-green-600 px-1.5 py-0.5 text-xs font-medium">
                   Admin
                 </span>
@@ -207,7 +207,7 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
 
           <Link href="/admin">
             <span className="text-xl font-semibold text-green-600">
-              AgriConnect Admin
+              AgTunisie Admin
             </span>
           </Link>
         </header>

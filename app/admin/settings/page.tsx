@@ -1,29 +1,36 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { toast } from "@/components/ui/use-toast"
-import { Toaster } from "@/components/ui/toaster"
-import { useLanguage } from "@/contexts/language-context"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { HexColorPicker } from "react-colorful"
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { toast } from "@/components/ui/use-toast";
+import { Toaster } from "@/components/ui/toaster";
+import { useLanguage } from "@/contexts/language-context";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { HexColorPicker } from "react-colorful";
 
 export default function AdminSettingsPage() {
-  const { t } = useLanguage()
-  const [appName, setAppName] = useState("AgriConnect")
-  const [appNameColor, setAppNameColor] = useState("#22c55e") // Default green color
-  const [isColorPickerOpen, setIsColorPickerOpen] = useState(false)
+  const { t } = useLanguage();
+  const [appName, setAppName] = useState("AgTunisie");
+  const [appNameColor, setAppNameColor] = useState("#22c55e"); // Default green color
+  const [isColorPickerOpen, setIsColorPickerOpen] = useState(false);
 
   const handleSaveAppSettings = () => {
     // In a real app, this would save to a database or config file
     toast({
       title: "Settings saved",
       description: "Application settings have been updated successfully.",
-    })
-  }
+    });
+  };
 
   return (
     <div className="flex-1 space-y-4 p-4 md:p-8 pt-6">
@@ -42,7 +49,9 @@ export default function AdminSettingsPage() {
           <Card>
             <CardHeader>
               <CardTitle>Application Settings</CardTitle>
-              <CardDescription>Configure general application settings.</CardDescription>
+              <CardDescription>
+                Configure general application settings.
+              </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="grid grid-cols-4 items-center gap-4">
@@ -50,7 +59,11 @@ export default function AdminSettingsPage() {
                   Application Name
                 </Label>
                 <div className="col-span-3">
-                  <Input id="app-name" value={appName} onChange={(e) => setAppName(e.target.value)} />
+                  <Input
+                    id="app-name"
+                    value={appName}
+                    onChange={(e) => setAppName(e.target.value)}
+                  />
                 </div>
               </div>
               <div className="grid grid-cols-4 items-center gap-4">
@@ -64,14 +77,24 @@ export default function AdminSettingsPage() {
                       style={{ backgroundColor: appNameColor }}
                       onClick={() => setIsColorPickerOpen(!isColorPickerOpen)}
                     />
-                    <Input id="app-name-color" value={appNameColor} onChange={(e) => setAppNameColor(e.target.value)} />
-                    <div className="text-2xl font-bold" style={{ color: appNameColor }}>
+                    <Input
+                      id="app-name-color"
+                      value={appNameColor}
+                      onChange={(e) => setAppNameColor(e.target.value)}
+                    />
+                    <div
+                      className="text-2xl font-bold"
+                      style={{ color: appNameColor }}
+                    >
                       {appName}
                     </div>
                   </div>
                   {isColorPickerOpen && (
                     <div className="mt-2">
-                      <HexColorPicker color={appNameColor} onChange={setAppNameColor} />
+                      <HexColorPicker
+                        color={appNameColor}
+                        onChange={setAppNameColor}
+                      />
                     </div>
                   )}
                 </div>
@@ -81,7 +104,11 @@ export default function AdminSettingsPage() {
                   Admin Email
                 </Label>
                 <div className="col-span-3">
-                  <Input id="admin-email" type="email" defaultValue="admin@agriconnect.com" />
+                  <Input
+                    id="admin-email"
+                    type="email"
+                    defaultValue="admin@AgTunisie.com"
+                  />
                 </div>
               </div>
               <div className="grid grid-cols-4 items-center gap-4">
@@ -89,7 +116,11 @@ export default function AdminSettingsPage() {
                   Support Email
                 </Label>
                 <div className="col-span-3">
-                  <Input id="support-email" type="email" defaultValue="support@agriconnect.com" />
+                  <Input
+                    id="support-email"
+                    type="email"
+                    defaultValue="support@AgTunisie.com"
+                  />
                 </div>
               </div>
             </CardContent>
@@ -103,7 +134,9 @@ export default function AdminSettingsPage() {
           <Card>
             <CardHeader>
               <CardTitle>Appearance Settings</CardTitle>
-              <CardDescription>Customize the look and feel of the application.</CardDescription>
+              <CardDescription>
+                Customize the look and feel of the application.
+              </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="grid grid-cols-4 items-center gap-4">
@@ -112,7 +145,10 @@ export default function AdminSettingsPage() {
                 </Label>
                 <div className="col-span-3">
                   <div className="flex items-center gap-4">
-                    <div className="h-10 w-10 rounded-md border" style={{ backgroundColor: "#22c55e" }} />
+                    <div
+                      className="h-10 w-10 rounded-md border"
+                      style={{ backgroundColor: "#22c55e" }}
+                    />
                     <Input id="primary-color" defaultValue="#22c55e" />
                   </div>
                 </div>
@@ -144,7 +180,9 @@ export default function AdminSettingsPage() {
           <Card>
             <CardHeader>
               <CardTitle>Security Settings</CardTitle>
-              <CardDescription>Configure security settings for the application.</CardDescription>
+              <CardDescription>
+                Configure security settings for the application.
+              </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="grid grid-cols-4 items-center gap-4">
@@ -164,7 +202,9 @@ export default function AdminSettingsPage() {
                 </Label>
                 <div className="col-span-3">
                   <Input id="session-timeout" type="number" defaultValue="30" />
-                  <p className="text-sm text-muted-foreground mt-1">Minutes of inactivity before session expires</p>
+                  <p className="text-sm text-muted-foreground mt-1">
+                    Minutes of inactivity before session expires
+                  </p>
                 </div>
               </div>
               <div className="grid grid-cols-4 items-center gap-4">
@@ -191,5 +231,5 @@ export default function AdminSettingsPage() {
       </Tabs>
       <Toaster />
     </div>
-  )
+  );
 }

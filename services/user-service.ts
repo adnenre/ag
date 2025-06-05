@@ -1,5 +1,11 @@
-import { databases, DATABASE_ID, USERS_COLLECTION_ID, isAppwriteAvailable, generateId } from "@/lib/appwrite"
-import { ID } from "appwrite"
+import {
+  databases,
+  DATABASE_ID,
+  USERS_COLLECTION_ID,
+  isAppwriteAvailable,
+  generateId,
+} from "@/lib/appwrite";
+import { ID } from "appwrite";
 
 // Dummy user data
 const dummyUsers = [
@@ -46,7 +52,7 @@ const dummyUsers = [
   {
     id: "5",
     name: "Admin User",
-    email: "admin@agriconnect.com",
+    email: "admin@AgTunisie.com",
     role: "admin",
     status: "active",
     subscription: "-",
@@ -56,146 +62,163 @@ const dummyUsers = [
   {
     id: "6",
     name: "Content Editor",
-    email: "editor@agriconnect.com",
+    email: "editor@AgTunisie.com",
     role: "editor",
     status: "active",
     subscription: "-",
     lastLogin: "2023-05-13",
     registeredDate: "2022-06-15",
   },
-]
+];
 
 export interface User {
-  id: string
-  name: string
-  email: string
-  role: string
-  status: string
-  subscription: string
-  lastLogin: string
-  registeredDate: string
+  id: string;
+  name: string;
+  email: string;
+  role: string;
+  status: string;
+  subscription: string;
+  lastLogin: string;
+  registeredDate: string;
 }
 
 export const UserService = {
   // Get all users
   getUsers: async (): Promise<User[]> => {
     try {
-      const appwriteAvailable = await isAppwriteAvailable()
+      const appwriteAvailable = await isAppwriteAvailable();
 
       if (appwriteAvailable) {
-        const response = await databases.listDocuments(DATABASE_ID, USERS_COLLECTION_ID)
-        return response.documents as unknown as User[]
+        const response = await databases.listDocuments(
+          DATABASE_ID,
+          USERS_COLLECTION_ID
+        );
+        return response.documents as unknown as User[];
       } else {
         // Fallback to dummy data
-        return dummyUsers
+        return dummyUsers;
       }
     } catch (error) {
-      console.error("Error fetching users:", error)
+      console.error("Error fetching users:", error);
       // Fallback to dummy data on error
-      return dummyUsers
+      return dummyUsers;
     }
   },
 
   // Get user by ID
   getUserById: async (id: string): Promise<User | null> => {
     try {
-      const appwriteAvailable = await isAppwriteAvailable()
+      const appwriteAvailable = await isAppwriteAvailable();
 
       if (appwriteAvailable) {
-        const user = await databases.getDocument(DATABASE_ID, USERS_COLLECTION_ID, id)
-        return user as unknown as User
+        const user = await databases.getDocument(
+          DATABASE_ID,
+          USERS_COLLECTION_ID,
+          id
+        );
+        return user as unknown as User;
       } else {
         // Fallback to dummy data
-        const user = dummyUsers.find((u) => u.id === id)
-        return user || null
+        const user = dummyUsers.find((u) => u.id === id);
+        return user || null;
       }
     } catch (error) {
-      console.error("Error fetching user:", error)
+      console.error("Error fetching user:", error);
       // Fallback to dummy data on error
-      const user = dummyUsers.find((u) => u.id === id)
-      return user || null
+      const user = dummyUsers.find((u) => u.id === id);
+      return user || null;
     }
   },
 
   // Create a new user
   createUser: async (userData: Omit<User, "id">): Promise<User> => {
     try {
-      const appwriteAvailable = await isAppwriteAvailable()
+      const appwriteAvailable = await isAppwriteAvailable();
 
       if (appwriteAvailable) {
-        const user = await databases.createDocument(DATABASE_ID, USERS_COLLECTION_ID, ID.unique(), userData)
-        return user as unknown as User
+        const user = await databases.createDocument(
+          DATABASE_ID,
+          USERS_COLLECTION_ID,
+          ID.unique(),
+          userData
+        );
+        return user as unknown as User;
       } else {
         // Fallback to dummy data
         const newUser = {
           id: generateId(),
           ...userData,
-        }
-        dummyUsers.push(newUser)
-        return newUser
+        };
+        dummyUsers.push(newUser);
+        return newUser;
       }
     } catch (error) {
-      console.error("Error creating user:", error)
+      console.error("Error creating user:", error);
       // Fallback to dummy data on error
       const newUser = {
         id: generateId(),
         ...userData,
-      }
-      dummyUsers.push(newUser)
-      return newUser
+      };
+      dummyUsers.push(newUser);
+      return newUser;
     }
   },
 
   // Update a user
   updateUser: async (id: string, userData: Partial<User>): Promise<User> => {
     try {
-      const appwriteAvailable = await isAppwriteAvailable()
+      const appwriteAvailable = await isAppwriteAvailable();
 
       if (appwriteAvailable) {
-        const user = await databases.updateDocument(DATABASE_ID, USERS_COLLECTION_ID, id, userData)
-        return user as unknown as User
+        const user = await databases.updateDocument(
+          DATABASE_ID,
+          USERS_COLLECTION_ID,
+          id,
+          userData
+        );
+        return user as unknown as User;
       } else {
         // Fallback to dummy data
-        const index = dummyUsers.findIndex((u) => u.id === id)
+        const index = dummyUsers.findIndex((u) => u.id === id);
         if (index !== -1) {
-          dummyUsers[index] = { ...dummyUsers[index], ...userData }
-          return dummyUsers[index]
+          dummyUsers[index] = { ...dummyUsers[index], ...userData };
+          return dummyUsers[index];
         }
-        throw new Error("User not found")
+        throw new Error("User not found");
       }
     } catch (error) {
-      console.error("Error updating user:", error)
+      console.error("Error updating user:", error);
       // Fallback to dummy data on error
-      const index = dummyUsers.findIndex((u) => u.id === id)
+      const index = dummyUsers.findIndex((u) => u.id === id);
       if (index !== -1) {
-        dummyUsers[index] = { ...dummyUsers[index], ...userData }
-        return dummyUsers[index]
+        dummyUsers[index] = { ...dummyUsers[index], ...userData };
+        return dummyUsers[index];
       }
-      throw new Error("User not found")
+      throw new Error("User not found");
     }
   },
 
   // Delete a user
   deleteUser: async (id: string): Promise<void> => {
     try {
-      const appwriteAvailable = await isAppwriteAvailable()
+      const appwriteAvailable = await isAppwriteAvailable();
 
       if (appwriteAvailable) {
-        await databases.deleteDocument(DATABASE_ID, USERS_COLLECTION_ID, id)
+        await databases.deleteDocument(DATABASE_ID, USERS_COLLECTION_ID, id);
       } else {
         // Fallback to dummy data
-        const index = dummyUsers.findIndex((u) => u.id === id)
+        const index = dummyUsers.findIndex((u) => u.id === id);
         if (index !== -1) {
-          dummyUsers.splice(index, 1)
+          dummyUsers.splice(index, 1);
         }
       }
     } catch (error) {
-      console.error("Error deleting user:", error)
+      console.error("Error deleting user:", error);
       // Fallback to dummy data on error
-      const index = dummyUsers.findIndex((u) => u.id === id)
+      const index = dummyUsers.findIndex((u) => u.id === id);
       if (index !== -1) {
-        dummyUsers.splice(index, 1)
+        dummyUsers.splice(index, 1);
       }
     }
   },
-}
+};

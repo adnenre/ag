@@ -66,10 +66,10 @@ export default function About() {
       <section className="min-h-screen flex items-center justify-center py-20    mx-auto text-center bg-green-800">
         <div className="bg-white rounded-xl shadow-lg p-8 max-w-4xl mx-auto">
           <h2 className="text-3xl font-semibold text-green-700 mb-4">
-            Introducing AgriConnect
+            Introducing AgTunisie
           </h2>
           <p className="text-lg text-gray-700 mb-6">
-            AgriConnect bridges the gap between farmers and regional market
+            AgTunisie bridges the gap between farmers and regional market
             agents, making it easier to exchange requests and manage inventory.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4 ">
@@ -256,7 +256,7 @@ export default function About() {
             ))}
           </div>
           <p className="bold text-xl mt-12 text-center text-green-800 max-w-4xl mx-auto">
-            "AgriConnect adapts to different regional markets and integrates new
+            "AgTunisie adapts to different regional markets and integrates new
             features based on user feedback and evolving industry needs. "
           </p>
         </div>

@@ -106,7 +106,7 @@ const initialUsersData = [
   {
     id: 5,
     name: "Admin User",
-    email: "admin@agriconnect.com",
+    email: "admin@AgTunisie.com",
     role: "admin",
     status: "active",
     subscription: "-",
@@ -116,7 +116,7 @@ const initialUsersData = [
   {
     id: 6,
     name: "Content Editor",
-    email: "editor@agriconnect.com",
+    email: "editor@AgTunisie.com",
     role: "editor",
     status: "active",
     subscription: "-",
