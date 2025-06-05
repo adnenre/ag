@@ -7,7 +7,17 @@ import {
 } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { BarChart3, Users, ShoppingBasket } from "lucide-react";
+export const viewport = {
+  themeColor: "#22c55e",
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+};
 
+export const metadata = {
+  title: "Admin Dashboard",
+  description: "Admin control panel",
+};
 export default function AdminDashboard() {
   return (
     <div className="flex-1 space-y-4 p-4 md:p-8 pt-6">
