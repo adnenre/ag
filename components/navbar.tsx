@@ -20,7 +20,14 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+  SheetClose,
+} from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
 import { toast } from "@/components/ui/use-toast";
 import { Toaster } from "@/components/ui/toaster";
@@ -112,6 +119,7 @@ export default function Navbar() {
               <Link
                 key={route.href}
                 href={route.href}
+                onClick={() => console.log("test")}
                 className={cn(
                   "transition-colors hover:text-foreground/80",
                   route.active ? "text-foreground" : "text-foreground/60"
@@ -126,28 +134,37 @@ export default function Navbar() {
         <Sheet>
           <SheetTrigger asChild>
             <Button variant="outline" size="icon" className="mr-2 md:hidden">
-              <Menu className="h-5 w-5" />
+              <Menu className="h-5 w-10" />
               <span className="sr-only">{t("menu", "general")}</span>
             </Button>
           </SheetTrigger>
           <SheetContent side="left" className="pr-0">
-            <Link href="/" className="flex items-center space-x-2">
-              <span className="font-bold text-xl text-green-600">
-                {t("appName", "general")}
-              </span>
-            </Link>
+            <SheetHeader>
+              <SheetTitle>
+                <SheetClose asChild>
+                  <Link href="/" className="flex items-center space-x-2">
+                    <span className="font-bold text-xl text-green-600">
+                      {t("appName", "general")}
+                    </span>
+                  </Link>
+                </SheetClose>
+              </SheetTitle>
+            </SheetHeader>
+
             <nav className="mt-6 flex flex-col space-y-4">
               {filteredRoutes.map((route) => (
-                <Link
-                  key={route.href}
-                  href={route.href}
-                  className={cn(
-                    "text-foreground/60 transition-colors hover:text-foreground/80",
-                    route.active && "text-foreground"
-                  )}
-                >
-                  {route.label}
-                </Link>
+                <SheetClose asChild key={route.href}>
+                  <Link
+                    key={route.href}
+                    href={route.href}
+                    className={cn(
+                      "text-foreground/60 transition-colors hover:text-foreground/80",
+                      route.active && "text-foreground"
+                    )}
+                  >
+                    {route.label}
+                  </Link>
+                </SheetClose>
               ))}
               {isAuthenticated && (
                 <button
