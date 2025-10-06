@@ -13,22 +13,22 @@ import { Button } from "@/components/ui/button";
 export default function About() {
   const teamMembers = [
     {
-      name: "Mariem Bouajina",
+      name: "",
       role: "Co-Founder",
       //bio: "Former agricultural economist with 10 years in market analysis",
-      avatar: "/teams/mariem.webp",
+      avatar: "",
     },
     {
-      name: "Fares Ajround",
+      name: "",
       role: "Co-Founder",
       // bio: "Full-stack developer specializing in rural tech solutions",
-      avatar: "/teams/fares.webp",
+      avatar: "",
     },
     {
-      name: "Adnen Rebai",
+      name: "",
       role: "Co-Founder",
       //bio: "Supply chain expert with focus on perishable goods",
-      avatar: "/teams/adnen.webp",
+      avatar: "",
     },
   ];
 
